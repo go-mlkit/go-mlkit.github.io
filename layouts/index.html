@@ -20,10 +20,8 @@
     <div>
       <h1 class="head">Machine learning in pure Go.<br><span class="accent">Planned, wave 3 of the go-scikit roadmap.</span></h1>
       <p class="sub"><b>go-mlkit is the planned home of machine learning for go-scikit</b>: clustering, classification and model selection, the parts of MATLAB's Statistics and Machine Learning Toolbox and Mathematica's <code>FindClusters</code>, <code>Classify</code> and <code>Predict</code> that no go-scikit organisation covers. It is in <b>wave 3</b>, together with go-statistics time series (PLAN.md item 15). There is no library and no release yet: this page says what is planned, in which wave, and against which references it will be validated.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="https://go-mlkit.github.io/docs/">{{ partial "icons/book.html" . }}Read the plan in the documentation →</a>
-        <a class="btn btn-ghost" href="https://github.com/go-scikit/roadmap/blob/main/PLAN.md">{{ partial "icons/github.html" . }}The roadmap (PLAN.md) →</a>
-      </div>
+      {{/* [[params.cta]] in hugo.toml: the kit renders the row */}}
+      {{ partial "cta.html" . }}
       <div class="trust"><span><b>planned</b> wave 3</span><span><b>no</b> release yet</span><span><b>CGO=0</b> pure Go</span></div>
     </div>
     <div class="term">
@@ -53,8 +51,8 @@ plan     go-scikit/roadmap: PLAN.md, STATUS.md</pre>
       <div class="card"><div class="ico">📉</div><h3>PCA and factor analysis</h3><p>Dimension reduction and rotations, the <code>pca</code> and <code>factoran</code> of MATLAB.</p></div>
       <div class="card"><div class="ico">✓</div><h3>Model selection</h3><p>Cross-validation splitters, grid search and metrics.</p></div>
       <div class="card"><div class="ico">🧪</div><h3>Validated against scikit-learn</h3><p>With the same seeds and initialisation the partitions must equal scikit-learn's; metrics are compared to cross-validation noise.</p></div>
-      <div class="card"><div class="ico">📦</div><h3>Pure Go, CGO=0</h3><p>No cgo; the same on every architecture the fleet tests.</p></div>
-      <div class="card"><div class="ico">⚖️</div><h3>BSD-3-Clause</h3><p>scikit-learn, LIBSVM and LIBLINEAR are BSD-3 and can be ported; GPL tools are oracles only.</p></div>
+      {{ if not (partial "mantra-on.html" $) }}<div class="card"><div class="ico">📦</div><h3>Pure Go, CGO=0</h3><p>No cgo; the same on every architecture the fleet tests.</p></div>{{ end }}
+      {{ if not (partial "mantra-on.html" $) }}<div class="card"><div class="ico">⚖️</div><h3>BSD-3-Clause</h3><p>scikit-learn, LIBSVM and LIBLINEAR are BSD-3 and can be ported; GPL tools are oracles only.</p></div>{{ end }}
     </div>
   </div></section>
 
@@ -90,6 +88,6 @@ plan     go-scikit/roadmap: PLAN.md, STATUS.md</pre>
     </div>
   </div></section>
 
-  <footer><div class="wrap"><span>go-mlkit · <a href="https://github.com/go-mlkit">go-mlkit on GitHub</a> · BSD-3-Clause</span><span>fit · validate · repeat</span></div></footer>
+  <footer><div class="wrap"><span>go-mlkit · <a href="https://github.com/go-mlkit">go-mlkit on GitHub</a>{{ if not (partial "mantra-on.html" $) }} · BSD-3-Clause{{ end }}</span><span>fit · validate · repeat</span></div></footer>
 </body>
 </html>
